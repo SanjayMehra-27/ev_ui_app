@@ -1,9 +1,10 @@
 import 'package:ev_ui_app/app/modules/home/view/home_vew.dart';
+import 'package:ev_ui_app/app/modules/insights/view/insights_vew.dart';
 import 'package:ev_ui_app/app/modules/usage_history/view/usage_history_vew.dart';
 import 'package:ev_ui_app/app/routes/app_routes.dart';
 import 'package:get/get.dart';
 class AppPages {
-  static const INITIAL = AppRoutes.HOME;
+  static const INITIAL = AppRoutes.INSIGHTS;
 
   static final routes = [
     GetPage(
@@ -13,6 +14,10 @@ class AppPages {
     GetPage(
       name: AppRoutes.USAGE_HISTORY,
       page: () => const UsageHistoryPage(),
+    ),
+    GetPage(
+      name: AppRoutes.INSIGHTS,
+      page: () => const InsightsPage(),
     ),
   ];
 }
