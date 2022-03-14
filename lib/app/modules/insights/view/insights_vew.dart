@@ -19,36 +19,39 @@ class InsightsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-            child: Column(
-      children: [
-        //  todo: add header
-        Center(
-          child: Container(
-            margin: const EdgeInsets.only(top: 40),
-            height: Get.height * 0.07,
-            width: Get.width * 0.9,
-            decoration: const BoxDecoration(
-              color: PRIMARY_COLOR,
-            ),
-            child: const Align(
-              alignment: Alignment.center,
-              child: Text(
-                'User Defined Time Selection',
-                style: TextStyle(color: Colors.white, fontSize: 20),
+            child: 
+            SingleChildScrollView(
+              child: Column(
+                  children: [
+                    //  todo: add header
+                    Center(
+                      child: Container(
+              margin: const EdgeInsets.only(top: 40),
+              height: Get.height * 0.07,
+              width: Get.width * 0.9,
+              decoration: const BoxDecoration(
+                color: PRIMARY_COLOR,
               ),
-            ),
-          ),
-        ),
-
-        // todo: add insights details
-        const InsightsDetailsWidget(),
-
-        SizedBox(height: Get.height * 0.05),
-        // todo: add PIE-Chart for insights
-        const Text('Time Of Use Breakdown',style: TextStyle(fontSize: 20, color: SECONDARY_COLOR, fontWeight: FontWeight.bold)),
-        // Chart
-        PieChartWidget(data: chartData),
-      ],
-    )));
+              child: const Align(
+                alignment: Alignment.center,
+                child: Text(
+                  'User Defined Time Selection',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+              ),
+                      ),
+                    ),
+            
+                    // todo: add insights details
+                    const InsightsDetailsWidget(),
+            
+                    SizedBox(height: Get.height * 0.05),
+                    // todo: add PIE-Chart for insights
+                    const Text('Time Of Use Breakdown',style: TextStyle(fontSize: 20, color: SECONDARY_COLOR, fontWeight: FontWeight.bold)),
+                    // Chart
+                    PieChartWidget(data: chartData),
+                  ],
+                ),
+            )));
   }
 }

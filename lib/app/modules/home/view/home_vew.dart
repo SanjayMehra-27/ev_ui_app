@@ -1,3 +1,4 @@
+import 'package:ev_ui_app/app/modules/insights/view/insights_vew.dart';
 import 'package:ev_ui_app/app/modules/usage_history/view/usage_history_vew.dart';
 import 'package:ev_ui_app/app/utils/colors_constants/color_constatnts.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,8 @@ class _HomeViewState extends State<HomeView> {
       case 0:
         return const HomePage();
       case 1:
+        return const InsightsPage();
+      case 2:
         return const UsageHistoryPage();
       default:
         return const UsageHistoryPage();
