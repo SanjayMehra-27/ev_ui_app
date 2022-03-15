@@ -1,4 +1,5 @@
-import 'package:ev_ui_app/app/modules/settings/controller/setings_controller.dart';
+
+import 'package:ev_ui_app/app/modules/supports/controller/supports_controller.dart';
 import 'package:ev_ui_app/app/utils/colors_constants/color_constatnts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,9 +10,9 @@ final List<String> issues = [
   "I have a general inquiry",
 ];
 
-class SettingsPage extends StatelessWidget {
-  SettingsPage({Key? key}) : super(key: key);
-  SettingsController settingsController = Get.put(SettingsController());
+class SupportsPage extends StatelessWidget {
+  SupportsPage({Key? key}) : super(key: key);
+  SupportController supportController = Get.put(SupportController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,10 +63,10 @@ class SettingsPage extends StatelessWidget {
                         child: Obx(
                           () => ListTile(
                             onTap: () {
-                              settingsController.selectedIndex(index);
+                              supportController.selectedIndex(index);
                             },
                             leading:
-                                settingsController.selectedIndex.value == index
+                                supportController.selectedIndex.value == index
                                     ? const Icon(
                                         Icons.check,
                                         color: Colors.green,
@@ -103,7 +104,7 @@ class SettingsPage extends StatelessWidget {
                   ],
                 ),
                 child: TextField(
-                    controller: settingsController.issueMessageController.value,
+                    controller: supportController.issueMessageController.value,
                     maxLines: 15,
                     cursorColor: SECONDARY_COLOR,
                     cursorHeight: 20,

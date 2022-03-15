@@ -1,6 +1,6 @@
 import 'package:ev_ui_app/app/modules/home/widgets/home_status_row/home_status_row.dart';
 import 'package:ev_ui_app/app/modules/home/widgets/options/options_widget.dart';
-import 'package:ev_ui_app/app/modules/settings/view/settings_view.dart';
+import 'package:ev_ui_app/app/modules/supports/view/supports_view.dart';
 import 'package:ev_ui_app/app/widgets/charts/class/chart_data.dart';
 import 'package:ev_ui_app/app/widgets/charts/doughnut_chart_widget.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +41,7 @@ class _HomeViewState extends State<HomeView> {
       case 2:
         return const UsageHistoryPage();
       case 3:
-        return SettingsPage();
+        return SupportsPage();
       default:
         return const UsageHistoryPage();
     }
