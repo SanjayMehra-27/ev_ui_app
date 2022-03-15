@@ -1,5 +1,6 @@
 import 'package:ev_ui_app/app/modules/home/widgets/home_status_row/home_status_row.dart';
 import 'package:ev_ui_app/app/modules/home/widgets/options/options_widget.dart';
+import 'package:ev_ui_app/app/modules/settings/view/settings_view.dart';
 import 'package:ev_ui_app/app/widgets/charts/class/chart_data.dart';
 import 'package:ev_ui_app/app/widgets/charts/doughnut_chart_widget.dart';
 import 'package:flutter/material.dart';
@@ -9,9 +10,9 @@ import 'package:ev_ui_app/app/utils/colors_constants/color_constatnts.dart';
 
 final List<ChartData> chartData = [
   ChartData('Charging at 11C/hr', 75, color: PRIMARY_COLOR),
-  ChartData('', 10, color: DANGER),
-  ChartData('', 5, color: SECONDARY_COLOR),
-  ChartData('', 7, color: WARNING_COLOR),
+  ChartData(' ', 10, color: DANGER),
+  ChartData(' ', 5, color: SECONDARY_COLOR),
+  ChartData(' ', 7, color: WARNING_COLOR),
 ];
 
 class HomeView extends StatefulWidget {
@@ -39,6 +40,8 @@ class _HomeViewState extends State<HomeView> {
         return const InsightsPage();
       case 2:
         return const UsageHistoryPage();
+      case 3:
+        return SettingsPage();
       default:
         return const UsageHistoryPage();
     }

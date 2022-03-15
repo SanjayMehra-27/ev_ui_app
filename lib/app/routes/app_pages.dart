@@ -1,5 +1,6 @@
 import 'package:ev_ui_app/app/modules/home/view/home_vew.dart';
 import 'package:ev_ui_app/app/modules/insights/view/insights_vew.dart';
+import 'package:ev_ui_app/app/modules/settings/view/settings_view.dart';
 import 'package:ev_ui_app/app/modules/usage_history/view/usage_history_vew.dart';
 import 'package:ev_ui_app/app/routes/app_routes.dart';
 import 'package:get/get.dart';
@@ -18,6 +19,10 @@ class AppPages {
     GetPage(
       name: AppRoutes.INSIGHTS,
       page: () => const InsightsPage(),
+    ),
+    GetPage(
+      name: AppRoutes.SETTINGS,
+      page: () => SettingsPage(),
     ),
   ];
 }
