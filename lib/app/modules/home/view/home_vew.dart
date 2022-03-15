@@ -1,8 +1,21 @@
+import 'package:ev_ui_app/app/modules/home/controller/home_controller.dart';
+import 'package:ev_ui_app/app/modules/home/widgets/home_status_row/home_status_row.dart';
+import 'package:ev_ui_app/app/modules/home/widgets/options/options_widget.dart';
+import 'package:ev_ui_app/app/widgets/charts/class/chart_data.dart';
+import 'package:ev_ui_app/app/widgets/charts/doughnut_chart_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 import 'package:ev_ui_app/app/modules/insights/view/insights_vew.dart';
 import 'package:ev_ui_app/app/modules/usage_history/view/usage_history_vew.dart';
 import 'package:ev_ui_app/app/utils/colors_constants/color_constatnts.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+final List<ChartData> chartData = [
+  ChartData('Charging at 11C/hr', 75, color: PRIMARY_COLOR),
+  ChartData('', 10, color: DANGER),
+  ChartData('', 5, color: SECONDARY_COLOR),
+  ChartData('', 7, color: WARNING_COLOR),
+];
 
 class HomeView extends StatefulWidget {
 
@@ -24,7 +37,7 @@ class _HomeViewState extends State<HomeView> {
   Widget _widgetOptions(index) {
     switch (index) {
       case 0:
-        return const HomePage();
+        return HomePage();
       case 1:
         return const InsightsPage();
       case 2:
@@ -70,10 +83,51 @@ class _HomeViewState extends State<HomeView> {
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({ Key? key }) : super(key: key);
-
+  HomePage({ Key? key }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('Home Page'));
+    return Container(
+      padding: const EdgeInsets.all(16),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            // todo: add header
+            Row(
+              children: [
+                Container(
+                  alignment: Alignment.bottomLeft,
+                  margin: const EdgeInsets.only(bottom: 16),
+                  height: 60,
+                  child: const Text(
+                    'Status : Charging, Smart Charge',
+                    style: TextStyle(
+                      fontSize: 25,
+                      color: DARK_COLOR
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            // todo: status cards section [Estimated kms, Estimated costs, Rewards]
+            const HomeStatusRowWidget(
+              imagePath: 'assets/images/live@test.png',
+            ),
+            const HomeStatusRowWidget(
+              imagePath: 'assets/images/back_arrow@test.png',
+            ),
+      
+            // todo: circular chart
+            DoughnutChartWidget(data: chartData,),
+      
+            // todo: options buttons with label name
+           HomeOptionsWidget(),
+      
+          ],
+        ),
+      ),
+    );
   }
 }
+
+
+

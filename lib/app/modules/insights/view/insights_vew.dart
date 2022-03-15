@@ -1,5 +1,6 @@
 import 'package:ev_ui_app/app/modules/insights/widgets/insights_details_widget.dart';
 import 'package:ev_ui_app/app/utils/colors_constants/color_constatnts.dart';
+import 'package:ev_ui_app/app/widgets/charts/class/chart_data.dart';
 import 'package:ev_ui_app/app/widgets/charts/pie_chart_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
