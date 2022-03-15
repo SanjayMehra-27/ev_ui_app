@@ -1,14 +1,11 @@
-import 'package:ev_ui_app/app/modules/home/controller/home_controller.dart';
 import 'package:ev_ui_app/app/modules/home/widgets/home_status_row/home_status_row.dart';
 import 'package:ev_ui_app/app/modules/home/widgets/options/options_widget.dart';
 import 'package:ev_ui_app/app/widgets/charts/class/chart_data.dart';
 import 'package:ev_ui_app/app/widgets/charts/doughnut_chart_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_switch/flutter_switch.dart';
 import 'package:ev_ui_app/app/modules/insights/view/insights_vew.dart';
 import 'package:ev_ui_app/app/modules/usage_history/view/usage_history_vew.dart';
 import 'package:ev_ui_app/app/utils/colors_constants/color_constatnts.dart';
-import 'package:get/get.dart';
 
 final List<ChartData> chartData = [
   ChartData('Charging at 11C/hr', 75, color: PRIMARY_COLOR),
