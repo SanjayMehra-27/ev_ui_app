@@ -29,7 +29,7 @@ class SupportsPage extends StatelessWidget {
             Icons.arrow_back_ios,
             color: DARK_COLOR,
           ),
-          onPressed: () => Get.toNamed('/home'),
+          onPressed: () => Get.back(),
         ),
         backgroundColor: Colors.transparent,
       ),

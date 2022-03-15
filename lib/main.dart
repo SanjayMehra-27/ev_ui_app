@@ -1,4 +1,5 @@
 import 'package:ev_ui_app/app/routes/app_pages.dart';
+import 'package:ev_ui_app/app/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,9 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'EV UI App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: Themes.light,
+      darkTheme: Themes.dark,
       debugShowCheckedModeBanner: false,
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
