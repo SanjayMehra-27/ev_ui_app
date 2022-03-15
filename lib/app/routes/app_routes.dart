@@ -3,4 +3,5 @@ class AppRoutes {
   static const USAGE_HISTORY = '/usage-history';
   static const INSIGHTS = '/insights';
   static const SUPPORTS = '/supports';
+  static const SETTINGS = '/settings';
 }
