@@ -1,3 +1,4 @@
+import 'package:ev_ui_app/app/modules/forgot_password/view/forgot_password_view.dart';
 import 'package:ev_ui_app/app/modules/home/view/home_vew.dart';
 import 'package:ev_ui_app/app/modules/insights/view/insights_vew.dart';
 import 'package:ev_ui_app/app/modules/login/view/login_view.dart';
@@ -12,7 +13,11 @@ class AppPages {
   static final routes = [
     GetPage(
       name: AppRoutes.LOGIN,
-      page: () => LoginPage(),
+      page: () => const LoginPage(),
+    ),
+    GetPage(
+      name: AppRoutes.FORGOT_PASSWORD,
+      page: () => const ForgotPasswordPage(),
     ),
     GetPage(
       name: AppRoutes.HOME,

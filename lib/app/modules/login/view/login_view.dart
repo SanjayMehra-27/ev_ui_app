@@ -1,5 +1,6 @@
 
-
+import 'package:ev_ui_app/app/modules/login/widget/login_header/login_header.dart';
+import 'package:ev_ui_app/app/modules/login/widget/sponsored_by/sponsored_by_widget.dart';
 import 'package:ev_ui_app/app/utils/colors_constants/color_constatnts.dart';
 import 'package:ev_ui_app/app/utils/style/style.dart';
 import 'package:flutter/gestures.dart';
@@ -14,30 +15,14 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Container(
-          color: Colors.white,
+        child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child : SingleChildScrollView(
+          child: Expanded(
             child: Column(
               children: [
                 // TODO: App Image LOGO
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      'assets/images/logo@test.png',
-                      fit: BoxFit.contain,
-                      height: 200,
-                      width: 150,
-                      ),
-                  ],
-                ),
+                const LoginHeaderWidget(),
             
-                // TODO: App Name | Heading
-                 Text(
-                  'Smart EV Charging Pilot',
-                  style: HeadingBoldBlack,
-                ),
                 const SizedBox(height: 50),
                 // TODO: User Email & Password Input Fields & Forgot Password Button, Reset Password Button Respectively
                  Column(
@@ -53,7 +38,11 @@ class LoginPage extends StatelessWidget {
                       ),
                      ),
                  TextButton(onPressed: (){
-          
+                  try {
+                     Get.toNamed('/forgot-password'); 
+                  } catch (e) {
+                    print(e);
+                  }                  
                  }, child: const Text(
                    'Forgot Password ?',
                    textAlign: TextAlign.end,
@@ -64,14 +53,17 @@ class LoginPage extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      TextField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          hintText: 'Password',
-                          labelStyle: Heading1BoldBlack,
-                          fillColor: SECONDARY_COLOR.withOpacity(0.15),
-                          filled: true,
-                          border: InputBorder.none
+                      Container(
+                        width: Get.width,
+                        child: TextField(
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            hintText: 'Password',
+                            labelStyle: Heading1BoldBlack,
+                            fillColor: SECONDARY_COLOR.withOpacity(0.15),
+                            filled: true,
+                            border: InputBorder.none
+                          ),
                         ),
                       ),
                       TextButton(
@@ -83,7 +75,7 @@ class LoginPage extends StatelessWidget {
                         )),
                     ],
                   ),
-          
+                    
                 // TODO: Sign in button
                 SizedBox(
                   width: Get.width,
@@ -124,14 +116,7 @@ class LoginPage extends StatelessWidget {
                 ),
             
                 // TODO: Sponsored by [Image]
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Expanded(child: Image.asset(
-                    'assets/images/sponsored_by@test.png',
-                    alignment: Alignment.bottomCenter,
-                    fit: BoxFit.contain,
-                    height: Get.height * 0.2,
-                    ))),
+                const SponsoredByWidget(),
               ],
             ),
           ),
@@ -140,3 +125,5 @@ class LoginPage extends StatelessWidget {
     );
   }
 }
+
+
