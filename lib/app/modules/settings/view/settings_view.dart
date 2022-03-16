@@ -4,23 +4,24 @@ import 'package:ev_ui_app/app/services/theme_service/theme_service.dart';
 import 'package:ev_ui_app/app/utils/colors_constants/color_constatnts.dart';
 import 'package:ev_ui_app/app/utils/enums/global_enums.dart';
 import 'package:ev_ui_app/app/utils/style/style.dart';
-import 'package:ev_ui_app/app/widgets/labels%20copy/inline/label_value_pair_widget.dart';
+import 'package:ev_ui_app/app/widgets/coming_soon/coming_soon.dart';
+import 'package:ev_ui_app/app/widgets/labels_copy/inline/label_value_pair_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
+  ThemeService themeService = Get.put(ThemeService());
 final List<SettingMenus> menus = [
   SettingMenus(
     title: 'EV Plug',
     onTap: () {
-      Get.toNamed(AppRoutes.PAGE_NOT_FOUND);
+      Get.to(() => const ComingSoonWidget());
     },
   ),
   SettingMenus(
     title: 'FAQ',
     onTap: () {
-      Get.toNamed(AppRoutes.PAGE_NOT_FOUND);
+      Get.to(() => const ComingSoonWidget());
     },
   ),
   SettingMenus(
@@ -32,28 +33,26 @@ final List<SettingMenus> menus = [
   SettingMenus(
     title: 'Notifications',
     onTap: () {
-      Get.toNamed(AppRoutes.PAGE_NOT_FOUND);
+      Get.to(() => const ComingSoonWidget());
     },
   ),
   SettingMenus(
     title: 'Legal',
     onTap: () {
-      launch(
-        'https://www.google.com/',
-      );
+      Get.to(() => const ComingSoonWidget());
     },
   ),
   SettingMenus(
     title: 'Dark Theme',
     isForToggleButton: true,
     onTap: () {
-      Get.toNamed(AppRoutes.PAGE_NOT_FOUND);
+      themeService.switchTheme();
     },
   ),
   SettingMenus(
     title: 'Reset Password',
     onTap: () {
-      Get.toNamed(AppRoutes.PAGE_NOT_FOUND);
+      Get.to(() => const ComingSoonWidget());
     },
   ),
 ];
@@ -64,13 +63,16 @@ class SettingMenus {
   final IconData? icon;
   final bool? isForToggleButton;
 
-  SettingMenus({required this.title, required this.onTap, this.icon, this.isForToggleButton = false});
+  SettingMenus(
+      {required this.title,
+      required this.onTap,
+      this.icon,
+      this.isForToggleButton = false});
 }
 
 class SettingsPage extends StatelessWidget {
   SettingsPage({Key? key}) : super(key: key);
   SettingsController settingsController = Get.put(SettingsController());
-  ThemeService themeService = Get.put(ThemeService());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -130,25 +132,23 @@ class SettingsPage extends StatelessWidget {
                   return ListTile(
                     style: ListTileStyle.drawer,
                     contentPadding: EdgeInsets.zero,
-                      onTap: () {
-                        try {
-                          if (index != 0) {
-                            menus[index].onTap();
-                          }
-                        } catch (e) {
-                          print("Error: $e");
-                        }
-                      },
-                      trailing: menus[index].isForToggleButton != null 
-                      && menus[index].isForToggleButton == true
-                      ? 
-                      SizedBox(
-                        width: 80,
-                        child:Obx(() =>  FlutterSwitch(
+                    onTap: () {
+                      try {
+                        menus[index].onTap();
+                      } catch (e) {
+                        print("Error: $e");
+                      }
+                    },
+                    trailing: menus[index].isForToggleButton != null &&
+                            menus[index].isForToggleButton == true
+                        ? SizedBox(
+                            width: 80,
+                            child: Obx(() => FlutterSwitch(
                                   width: 100.0,
                                   height: 40.0,
                                   activeColor: DARK_COLOR,
-                                  inactiveColor: SECONDARY_COLOR.withOpacity(0.5),
+                                  inactiveColor:
+                                      SECONDARY_COLOR.withOpacity(0.5),
                                   valueFontSize: 25.0,
                                   toggleSize: 30.0,
                                   value: themeService.isDarkModeEnable.value,
@@ -159,21 +159,17 @@ class SettingsPage extends StatelessWidget {
                                     // todo: update theme
                                     themeService.switchTheme();
                                   },
-                                )
-                      )
-                      )
-                    :
-                      const Icon(
-                        Icons.keyboard_arrow_right,
-                        color: Colors.grey,
-                      ),
-                      title: Text(
-                        menus[index].title,
-                        style: const TextStyle(
-                            color: SECONDARY_COLOR,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    );
+                                )))
+                        : const Icon(
+                            Icons.keyboard_arrow_right,
+                            color: Colors.grey,
+                          ),
+                    title: Text(
+                      menus[index].title,
+                      style: const TextStyle(
+                          color: SECONDARY_COLOR, fontWeight: FontWeight.bold),
+                    ),
+                  );
                 },
                 itemCount: menus.length,
                 separatorBuilder: (BuildContext context, int index) {
