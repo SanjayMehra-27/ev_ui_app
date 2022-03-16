@@ -1,5 +1,6 @@
 import 'package:ev_ui_app/app/modules/settings/controller/settings_controller.dart';
 import 'package:ev_ui_app/app/routes/app_routes.dart';
+import 'package:ev_ui_app/app/services/theme_service/theme_service.dart';
 import 'package:ev_ui_app/app/utils/colors_constants/color_constatnts.dart';
 import 'package:ev_ui_app/app/utils/enums/global_enums.dart';
 import 'package:ev_ui_app/app/utils/style/style.dart';
@@ -69,6 +70,7 @@ class SettingMenus {
 class SettingsPage extends StatelessWidget {
   SettingsPage({Key? key}) : super(key: key);
   SettingsController settingsController = Get.put(SettingsController());
+  ThemeService themeService = Get.put(ThemeService());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -140,26 +142,25 @@ class SettingsPage extends StatelessWidget {
                       trailing: menus[index].isForToggleButton != null 
                       && menus[index].isForToggleButton == true
                       ? 
-                      Container(
+                      SizedBox(
                         width: 80,
-                        child:  Obx(() => FlutterSwitch(
+                        child:Obx(() =>  FlutterSwitch(
                                   width: 100.0,
                                   height: 40.0,
                                   activeColor: DARK_COLOR,
                                   inactiveColor: SECONDARY_COLOR.withOpacity(0.5),
                                   valueFontSize: 25.0,
                                   toggleSize: 30.0,
-                                  value: settingsController.isDarkModeEnable.value,
+                                  value: themeService.isDarkModeEnable.value,
                                   borderRadius: 30.0,
                                   padding: 8.0,
                                   showOnOff: false,
                                   onToggle: (val) {
-                                    settingsController.isDarkModeEnable.value = val;
                                     // todo: update theme
-                                    Get.changeThemeMode(
-                                        settingsController.isDarkModeEnable.value ? ThemeMode.dark : ThemeMode.light);
+                                    themeService.switchTheme();
                                   },
-                                ))
+                                )
+                      )
                       )
                     :
                       const Icon(

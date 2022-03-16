@@ -37,6 +37,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   get: ^4.6.1
+  get_storage: ^2.0.3
   syncfusion_flutter_charts: ^19.4.55
   url_launcher: ^6.0.20
 
