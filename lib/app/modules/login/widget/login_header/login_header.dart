@@ -19,7 +19,7 @@ class LoginHeaderWidget extends StatelessWidget {
         // TODO: App Name | Heading
         Text(
           'Smart EV Charging Pilot',
-          style: HeadingBoldBlack,
+          style: Theme.of(context).textTheme.headline5,
         ),
       ],
     );

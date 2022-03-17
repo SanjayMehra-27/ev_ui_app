@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
-  ThemeService themeService = Get.put(ThemeService());
+ThemeService themeService = Get.put(ThemeService());
 final List<SettingMenus> menus = [
   SettingMenus(
     title: 'EV Plug',
@@ -79,9 +79,9 @@ class SettingsPage extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         elevation: 0,
-        title: const Text(
+        title: Text(
           'Settings',
-          style: TextStyle(color: DARK_COLOR),
+          style: Theme.of(context).textTheme.headline6,
         ),
         centerTitle: true,
         backgroundColor: Colors.transparent,
@@ -96,30 +96,30 @@ class SettingsPage extends StatelessWidget {
               // todo: User Details : [Registered User Email, EV Plug ID, Customer ID]
               LabelValuePairWidget(
                 label: 'Registered User',
-                labelStyle: Heading1BoldGrey,
+                labelStyle: title(context),
                 value: 'john.doe@gmail.com',
                 spacing: 1,
-                valueStyle: SubHeadingPrimary,
+                valueStyle: subtitle(context,textColor: PRIMARY_COLOR),
                 labelType: LabelType.TOP_DOWN,
                 crossAxisAlignment: CrossAxisAlignment.start,
               ),
               const SizedBox(height: 15),
               LabelValuePairWidget(
                 label: 'EV Plug ID',
-                labelStyle: Heading1BoldGrey,
+                labelStyle: title(context),
                 value: 'QX-Series-000AE2029',
                 spacing: 1,
-                valueStyle: Heading1Black87,
+                valueStyle: subtitle(context),
                 labelType: LabelType.TOP_DOWN,
                 crossAxisAlignment: CrossAxisAlignment.start,
               ),
               const SizedBox(height: 15),
               LabelValuePairWidget(
                 label: 'Customer ID',
-                labelStyle: Heading1BoldGrey,
+                labelStyle: title(context),
                 value: '123456789',
                 spacing: 1,
-                valueStyle: Heading1Black87,
+                valueStyle: subtitle(context),
                 labelType: LabelType.TOP_DOWN,
                 crossAxisAlignment: CrossAxisAlignment.start,
               ),
@@ -182,7 +182,9 @@ class SettingsPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(AppRoutes.LOGIN);
+                    },
                     child: Text("Logout",
                         style: TextStyle(
                             fontSize: 20,

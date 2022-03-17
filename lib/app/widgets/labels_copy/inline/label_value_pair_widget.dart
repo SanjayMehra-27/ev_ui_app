@@ -42,7 +42,7 @@ class LabelValuePairWidget extends StatelessWidget {
                 '${value != null ? value : 0} ',
                 softWrap: false,
                 overflow: TextOverflow.fade,
-                style: valueStyle ?? Heading1Black,
+                style: valueStyle ?? Theme.of(context).textTheme.subtitle1,
               ),
             ],
           )
@@ -63,7 +63,7 @@ class LabelValuePairWidget extends StatelessWidget {
                 SizedBox(height: spacing ?? 8),
                 Text(
                   '${value != null ? value : 0} ',
-                  style: labelStyle ?? Heading1Black,
+                  style: labelStyle ?? Theme.of(context).textTheme.subtitle1,
                   softWrap: false,
                   overflow: TextOverflow.fade,
                 ),

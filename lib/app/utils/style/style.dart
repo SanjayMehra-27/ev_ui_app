@@ -1,5 +1,6 @@
 import 'package:ev_ui_app/app/utils/colors_constants/color_constatnts.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 BoxShadow shadow = new BoxShadow(
   color: Colors.grey,
@@ -183,3 +184,28 @@ TextStyle Heading4Black =
 
 TextStyle graySubTitleText =
     TextStyle(fontSize: 18, fontWeight: FontWeight.w400, color: Colors.grey);
+
+    // TextStyle Using TextTheme
+
+
+
+    TextStyle? title(context, {Color? textColor}) => Get.textTheme.bodyText1?.copyWith(
+                    color: textColor ?? Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+                    fontSize: 18
+                    );
+    
+    TextStyle? subtitle(context,{Color? textColor}) => Get.textTheme.bodyText1?.copyWith(
+                    color: textColor ?? Theme.of(context).colorScheme.onSurface.withOpacity(0.87),
+                    fontSize: 16
+                    );
+  
+    TextStyle? body(context, {Color? textColor}) => Get.textTheme.bodyText1?.copyWith(
+                    color: textColor,
+                    fontSize: 14
+                    );
+
+    TextStyle? caption(context, {Color? textColor}) => Get.textTheme.bodyText1?.copyWith(
+                    color: textColor ?? Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+                    fontSize: 12
+                    );
+    

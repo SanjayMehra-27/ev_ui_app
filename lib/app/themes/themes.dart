@@ -3,12 +3,16 @@ import 'package:flutter/material.dart';
 class Themes {
   static final light = ThemeData.light().copyWith(
     backgroundColor: Colors.white,
-    textTheme: TextTheme(
+    textTheme:const TextTheme(
       bodyText1: TextStyle(
-        color: Colors.black,
+        color: Colors.grey,
+        fontSize: 18,
+        fontWeight: FontWeight.w500,
       ),
       bodyText2: TextStyle(
-        color: Colors.black,
+         color: Colors.grey,
+         fontWeight: FontWeight.w500,
+        fontSize: 16,
       ),
       button: TextStyle(
         color: Colors.black,
@@ -44,17 +48,25 @@ class Themes {
         color: Colors.black,
       ),
     ),
-    buttonColor: Colors.blue,
+    buttonTheme: const ButtonThemeData(
+      buttonColor: Colors.black,
+      textTheme: ButtonTextTheme.primary,
+    ),
   );
   static final dark = ThemeData.dark().copyWith(
     backgroundColor: Colors.black,
-    textTheme: TextTheme(
-      bodyText1: TextStyle(
+    textTheme: const TextTheme(
+        bodyText1: TextStyle(
         color: Colors.white,
+        fontSize: 18,
+        fontWeight: FontWeight.w500,
       ),
       bodyText2: TextStyle(
-        color: Colors.white,
+         color: Colors.white,
+         fontWeight: FontWeight.w500,
+        fontSize: 16,
       ),
+      
       button: TextStyle(
         color: Colors.white,
       ),
@@ -89,6 +101,9 @@ class Themes {
         color: Colors.white,
       ),
     ),
-    buttonColor: Colors.red,
+    buttonTheme: const ButtonThemeData(
+      buttonColor: Colors.blue,
+      textTheme: ButtonTextTheme.primary,
+    ),
   );
 }

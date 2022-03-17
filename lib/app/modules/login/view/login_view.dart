@@ -13,7 +13,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -87,6 +87,11 @@ class LoginPage extends StatelessWidget {
                     primary: PRIMARY_COLOR
                   ),
                   onPressed: (){
+                    try {
+                      Get.toNamed('/home'); 
+                    } catch (e) {
+                      print(e);
+                    }
                 }, child: Text(
                   'Sign In',
                   style: Heading1White,
@@ -99,7 +104,7 @@ class LoginPage extends StatelessWidget {
               RichText(
                 text: TextSpan(
                   text: 'Don\'t have an account? ',
-                  style: const TextStyle(color: Colors.black),
+                  style:  body(context),
                   children: [
                     TextSpan(
                       mouseCursor: MouseCursor.uncontrolled,
@@ -108,10 +113,10 @@ class LoginPage extends StatelessWidget {
                           Get.toNamed('/home');
                         },
                       text: 'Register',
-                      style: const TextStyle(
-                        color: DARK_COLOR,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: !Get.isDarkMode ?  Theme.of(context).textTheme.titleSmall
+                          : Theme.of(context).textTheme.titleSmall?.copyWith(
+                            color: PRIMARY_COLOR,
+                          ),
                     ),
                     const TextSpan(text: ' here.'),
                   ],
