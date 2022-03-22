@@ -17,16 +17,16 @@ class HomeOptionsWidget extends StatelessWidget {
         Row(
           children: [
             // todo: add label name
-           const  Expanded(
+            Expanded(
               child: Text(
                 'Charging',
-                style: TextStyle(fontSize: 18, color: DARK_COLOR),
+                style: Theme.of(context).textTheme.titleLarge,
               ),
             ),
             // todo: add a switch button for on/off
             Obx(
               () => FlutterSwitch(
-                width: 100.0,
+                width: 90.0,
                 height: 40.0,
                 activeColor: PRIMARY_COLOR,
                 valueFontSize: 25.0,
@@ -50,12 +50,12 @@ class HomeOptionsWidget extends StatelessWidget {
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children:  [
                   Text(
                     'Smart Charge',
-                    style: TextStyle(fontSize: 18, color: DARK_COLOR),
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
-                  Text(
+                 const Text(
                     'Charge during off peak hours only',
                     style: TextStyle(fontSize: 16, color: SECONDARY_COLOR),
                   ),
@@ -65,7 +65,7 @@ class HomeOptionsWidget extends StatelessWidget {
             // todo: add a switch button for on/off
             Obx(
               () => FlutterSwitch(
-                width: 100.0,
+                width: 90.0,
                 height: 40.0,
                 activeColor: PRIMARY_COLOR,
                 valueFontSize: 25.0,
@@ -88,12 +88,12 @@ class HomeOptionsWidget extends StatelessWidget {
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children:  [
                   Text(
                     'Opt in to the demand response events',
-                    style: TextStyle(fontSize: 18, color: DARK_COLOR),
+                     style: Theme.of(context).textTheme.titleLarge,
                   ),
-                  Text(
+                  const Text(
                     'Earned Rewards',
                     style: TextStyle(fontSize: 16, color: SECONDARY_COLOR),
                   ),
@@ -103,7 +103,7 @@ class HomeOptionsWidget extends StatelessWidget {
             // todo: add a switch button for on/off
             Obx(
               () => FlutterSwitch(
-                width: 100.0,
+                width: 90.0,
                 height: 40.0,
                 activeColor: PRIMARY_COLOR,
                 valueFontSize: 25.0,

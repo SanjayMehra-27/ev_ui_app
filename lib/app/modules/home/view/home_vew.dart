@@ -1,8 +1,10 @@
 import 'package:ev_ui_app/app/modules/home/widgets/home_status_row/home_status_row.dart';
 import 'package:ev_ui_app/app/modules/home/widgets/options/options_widget.dart';
 import 'package:ev_ui_app/app/modules/settings/view/settings_view.dart';
+import 'package:ev_ui_app/app/utils/enums/global_enums.dart';
 import 'package:ev_ui_app/app/widgets/charts/class/chart_data.dart';
 import 'package:ev_ui_app/app/widgets/charts/doughnut_chart_widget.dart';
+import 'package:ev_ui_app/app/widgets/labels_copy/inline/label_value_pair_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:ev_ui_app/app/modules/insights/view/insights_vew.dart';
 import 'package:ev_ui_app/app/modules/usage_history/view/usage_history_vew.dart';
@@ -83,7 +85,7 @@ class _HomeViewState extends State<HomeView> {
 }
 
 class HomePage extends StatelessWidget {
-  HomePage({ Key? key }) : super(key: key);
+  const HomePage({ Key? key }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -98,24 +100,39 @@ class HomePage extends StatelessWidget {
                   alignment: Alignment.bottomLeft,
                   margin: const EdgeInsets.only(bottom: 16),
                   height: 60,
-                  child: const Text(
+                  child:  Text(
                     'Status : Charging, Smart Charge',
-                    style: TextStyle(
-                      fontSize: 25,
-                      color: DARK_COLOR
-                    ),
+                    style: Theme.of(context).textTheme.headline5,
                   ),
                 ),
               ],
             ),
-            // todo: status cards section [Estimated kms, Estimated costs, Rewards]
-            const HomeStatusRowWidget(
-              imagePath: 'assets/images/live@test.png',
+            // todo: status Radio-button for section [Kms. added,Charging costs, Rewards earned]
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Estimates", style: Theme.of(context).textTheme.headline5),
+                const HomeStatusRowWidget(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    LabelValuePairWidget(
+                      value: 'in last hour', 
+                      label: '2.5 Kms.',
+                      labelStyle: Theme.of(context).textTheme.headline5,
+                      valueStyle: Theme.of(context).textTheme.titleMedium,
+                      labelType: LabelType.TOP_DOWN),
+                    LabelValuePairWidget(
+                      value: 'in last 24 hours', 
+                      label: '25 Kms.',
+                      labelStyle: Theme.of(context).textTheme.headline5,
+                      valueStyle: Theme.of(context).textTheme.titleMedium,
+                      labelType: LabelType.TOP_DOWN),
+                  ],
+                ),
+              ],
             ),
-            const HomeStatusRowWidget(
-              imagePath: 'assets/images/back_arrow@test.png',
-            ),
-      
+
             // todo: circular chart
             DoughnutChartWidget(data: chartData,),
       
