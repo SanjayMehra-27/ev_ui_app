@@ -27,16 +27,16 @@ class NetworkUtil {
     //   return client;
     // };
 
-    dio?.options.baseUrl = baseUrl;
+    // dio?.options.baseUrl = baseUrl;
     dio?.options.connectTimeout = 60000; //5s
     dio?.options.receiveTimeout = 60000;
     //dio.interceptors.add(LogInterceptor());
     dio?.interceptors.add(
         InterceptorsWrapper(onRequest: (RequestOptions options, handler) async {
       // Do something before request is sent
-      if (NetworkUtil.token != null || NetworkUtil.token != "") {
-        options.headers['authorization'] = NetworkUtil.token;
-      }
+      // if (NetworkUtil.token != null || NetworkUtil.token != "") {
+      //   options.headers['authorization'] = NetworkUtil.token;
+      // }
 
       if (isDebug) {
         log("-------------  Request   ------------------");
@@ -58,7 +58,6 @@ class NetworkUtil {
     }, onError: (DioError e, handler) async {
       log("-------------  Error   ------------------");
       log('requestOptions > ' + e.requestOptions.data.toString());
-      log('response > ' + e.response!.data.toString());
       log('message > ' + e.message.toString());
 
       if (e.type == DioErrorType.connectTimeout ||
